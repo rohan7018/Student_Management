@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Performance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="menu-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="brand">STUDENT<span>.</span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">STUDENT PERFORMANCE SYSTEM</p>
+        <h1>Track progress.<br>Understand performance.</h1>
+        <p class="hero-copy">
+          A clean dashboard for managing students, marks, courses and academic performance.
+        </p>
+        <button class="discover-btn" id="discoverBtn">
+          Explore dashboard <span>→</span>
+        </button>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-shape shape-one"></div>
+      <div class="hero-shape shape-two"></div>
+    </section>
+
+    <section class="dashboard" id="dashboard">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">OVERVIEW</p>
+          <h2>Student dashboard</h2>
+        </div>
+        <button class="primary-btn" id="addStudentBtn">+ Add student</button>
+      </div>
+
+      <div class="stats">
+        <article class="stat-card">
+          <span>Total students</span>
+          <strong id="totalStudents">0</strong>
+        </article>
+        <article class="stat-card">
+          <span>Average marks</span>
+          <strong id="averageMarks">0</strong>
+        </article>
+        <article class="stat-card">
+          <span>Top score</span>
+          <strong id="topScore">0</strong>
+        </article>
+      </div>
+
+      <div class="toolbar">
+        <input id="searchInput" type="text" placeholder="Search student by name or ID">
+        <select id="sortSelect">
+          <option value="">Sort students</option>
+          <option value="name">Name</option>
+          <option value="marks">Marks</option>
+          <option value="id">ID</option>
+        </select>
+      </div>
+
+      <div id="message" class="message hidden"></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Student</th>
+              <th>Course</th>
+              <th>Marks</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="studentTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="studentModal">
+    <div class="modal-card">
+      <button class="close-btn" id="closeModal" aria-label="Close">×</button>
+      <p class="eyebrow" id="modalEyebrow">NEW RECORD</p>
+      <h2 id="modalTitle">Add student</h2>
+
+      <form id="studentForm">
+        <div class="field"><input id="studentId" type="text" placeholder="Student ID (max 12 digits)" inputmode="numeric" maxlength="12" required><small id="studentIdHint">Digits only</small></div>
+        <input id="studentName" type="text" placeholder="Student name" required>
+        <input id="studentCourse" type="text" placeholder="Course (e.g. CSE)" required>
+        <input id="studentMarks" type="number" min="0" max="100" step="0.01" placeholder="Marks" required>
+        <div id="modalMessage" class="message hidden"></div>
+        <button class="primary-btn" id="submitStudentBtn" type="submit">Save student</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="deleteModal">
+    <div class="modal-card confirm-card">
+      <p class="eyebrow">CONFIRM ACTION</p>
+      <h2>Delete student?</h2>
+      <p class="confirm-copy">This will permanently remove <strong id="deleteName"></strong> from the database.</p>
+      <div class="confirm-actions">
+        <button class="secondary-btn" id="cancelDelete">Cancel</button>
+        <button class="danger-btn" id="confirmDelete">Delete student</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js?v=3"></script>
+</body>
+</html>
